@@ -1,8 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-local TweenService = game:GetService("TweenService")
 
--- Only create if it doesn't exist
+-- Ensure we only create the module if it doesn't already exist
 if not ReplicatedStorage:FindFirstChild("NotificationModule") then
 	local module = Instance.new("ModuleScript")
 	module.Name = "NotificationModule"
