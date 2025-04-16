@@ -1,12 +1,12 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
 
--- Auto-create the module if not found
-local moduleName = "VinitysNotificationModule"
-local existing = ReplicatedStorage:FindFirstChild(moduleName)
-
-if not existing then
+-- Only create if it doesn't exist
+if not ReplicatedStorage:FindFirstChild("NotificationModule") then
 	local module = Instance.new("ModuleScript")
-	module.Name = moduleName
+	module.Name = "NotificationModule"
+
 	module.Source = [[
 		local TweenService = game:GetService("TweenService")
 		local Players = game:GetService("Players")
@@ -82,15 +82,6 @@ if not existing then
 
 		return module
 	]]
+
 	module.Parent = ReplicatedStorage
 end
-
--- Use it
-local Notify = require(ReplicatedStorage:WaitForChild(moduleName))
-_G.VinitysNotificationSystem = function(text)
-	Notify.Notify(text)
-end
-
--- 🧪 Test call
-task.wait(1)
-_G.VinitysNotificationSystem("Auto-created lib ready!")
